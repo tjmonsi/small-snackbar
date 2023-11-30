@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <form id="form">
+    <label for="name">Text</label>
+    <input type="text" id="text" name="text" placeholder="Enter a text here">
+    <button>Submit</button>
+  </form>
+  <small-snackbar></small-snackbar>
+
+  <div id="after-snackbar">
+  </div>
+
+  <script type="module">
+    
+    import '../small-snackbar.js';
+
+    const form = document.querySelector('#form');
+    const snackbar = document.querySelector('small-snackbar');
+    const div = document.querySelector('#after-snackbar');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const { target: form } = event;
+      snackbar.open(form.text.value || 'No text provided.');
+      div.innerText = '';
+    });
+
+    snackbar.addEventListener('hide', (event) => {
+      const { detail } = event;
+      const { text } = detail;
+      div.innerText = text;
+    })
+  </script>
+</body>
+</html>
