@@ -1,1 +1,1 @@
-export { SmallSnackbar } from './src/SmallSnackbar.js';
+export { SmallSnackbar } from './src/small-snackbar.js';
